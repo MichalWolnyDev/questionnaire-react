@@ -1,0 +1,122 @@
+.form {
+  padding: 60px 0;
+
+  @media (max-width: 560px) {
+    padding: 25px 0;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    text-align: center;
+
+    @media (max-width: 560px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: calc((100% / 3) - 30px + (30px / 3));
+
+    @media (max-width: 960px) {
+      width: calc((100% / 2) - 30px + (30px / 2));
+    }
+    @media (max-width: 560px) {
+      width: 100%;
+    }
+  }
+
+  &__input {
+    width: -webkit-fill-available;
+    padding: 0 0.5rem;
+    height: 47px;
+  }
+
+  &__select{
+    height: 100%;
+  }
+
+  &__label{
+    font-size: 12px;
+    margin-bottom: 15px;
+
+    &-mobile{
+      display: none;
+      @media(max-width: 600px){
+        display: block;
+      }
+    }
+  }
+
+  &__consents {
+    padding: 1rem 0;
+
+    p{
+        font-size: 12px;
+        margin: 15px 0;
+    }
+
+    &-more{
+        font-weight: 700;
+        cursor: pointer;
+    }
+  }
+
+  &__checkbox{
+    position: relative;
+    margin-right: 12px;
+    &::after{
+        content: ' ';
+        display: block;
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 4px;
+        position: absolute;
+        top: -2px;
+        left: -3px;
+        background-color: #fff;
+        text-align: center;
+        border: 1px solid #AAAAAA;
+    }
+    &:checked::after{
+        background: #f50537 url('../../assets/img/icon-check.svg') 50% 50% no-repeat;
+        border: 1px solid #f50537;
+        background-size: 50%;
+    }
+  }
+
+  &__msg{
+    text-align: center;
+    padding: 0 0 60px;
+  }
+
+  &__error{
+    color: $audired;
+    font-size: 12px;
+    margin: 10px 0 0;
+  }
+
+  &__action {
+    text-align: center;
+    padding: 3rem 0 0;
+  }
+
+  &__button {
+    background-color: $black;
+    color: #fff;
+    width: 256px;
+    max-width: 100%;
+    padding: 1rem;
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+  }
+  
+}
