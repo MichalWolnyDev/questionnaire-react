@@ -1,14 +1,23 @@
+import { useEffect } from 'react';
 import Container from "../ui/Container";
 import styles from "../../scss/sections/Summary.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { calcPercent } from "../../helpers/calcPercent";
+import { countAllQuestions } from "../../store/slices/questionsSlice";
 
 const Summary = () => {
+  const dispatch = useDispatch();
   const summary = useSelector((state: RootState) => state.summary.summary);
   const totalChecked = useSelector(
     (state: RootState) => state.questions.totalChecked
   );
+  const questionsLength = useSelector((state: RootState) => state.questions.totalCount)
+
+  useEffect(() => {
+    dispatch(countAllQuestions())
+  }, [dispatch, questionsLength])
+
 
   return (
     <section>
@@ -29,10 +38,10 @@ const Summary = () => {
             </div>
             <div className={styles.summary__total}>
               <p className={styles["summary__total-value"]}>
-                {calcPercent(totalChecked, 46)} %
+                {calcPercent(totalChecked, questionsLength)} %
               </p>
               <p className={styles["summary__total-count"]}>
-                ({totalChecked}/46)
+                ({totalChecked}/{questionsLength})
               </p>
             </div>
           </div>
